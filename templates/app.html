@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <title>Chat</title>
+    </head>
+    <body>
+        <div class="chat-container">
+            <div class="messages" id="messages">
+            </div>
+
+            <div class="chat-form-container">
+                <form id="chat-form" method="post">
+                        <input type="text" name="message" id="message-input" placeholder="Digite a mensagem..">
+                        <input type="submit" value="Enviar">
+                </form>
+
+                <p class="status" id="status"></p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="{{ url_for('static', filename='js/fetch_and_send_messages.js') }}"></script>

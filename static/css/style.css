@@ -1,0 +1,120 @@
+:root{
+    --primary-color: rgb(48, 48, 48);
+    --secondary-color: rgb(23, 23, 23);
+    --background-color: rgb(33, 33, 33);
+
+    --text-color: white;
+    
+    --font-family: 'Rubik', sans-serif;
+}
+
+html, body{
+    overflow: hidden;
+
+    margin: 0; 
+    height: 100%; 
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+
+    padding: 5vh 20vw;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    font-family: var(--font-family);
+}
+
+.chat-container{
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+
+    box-sizing: border-box;
+}
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    padding: 0 10vw;
+}
+
+.messages div{
+    width: 100%;
+
+    border-radius: 10vh;
+
+    font-weight: 500;
+
+    word-wrap: break-word;
+}
+
+.msg-sent, .msg-received{
+    padding: 2vh;
+    margin: 1vh 0;
+
+    color: var(--text-color);
+}
+
+.msg-sent{
+    background-color: var(--primary-color);
+
+    text-align: right;
+}
+
+.msg-received{
+    background-color: var(--secondary-color);
+
+    text-align: left;
+}
+
+.chat-form-container{
+    position: sticky;
+
+    bottom: 2.5vh;
+    padding: 5vh 0;
+    width: 100%;
+}
+
+form{
+    display: flex;
+
+    gap: 2.5vh;
+    width: 100%;
+}
+
+input{
+    padding: 2vh;
+
+    border: 0.25vh solid var(--text-color);
+    border-radius: 10vh;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+    
+    font-family: var(--font-family);
+    font-size: 1.5vh;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    /* width: 100%; */
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+.status{
+    text-align: center;
+}
