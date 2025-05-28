@@ -2,10 +2,8 @@ import requests
 import threading
 import datetime
 import logging
-import os
-import json
 from flask import Flask, redirect, url_for, jsonify, render_template, request
-from util.rsa import rsaGenerateKeys, rsaEncode, rsaDecode
+from util.cryptography.my_rsa import rsaGenerateKeys, rsaEncode, rsaDecode
 from util.get_ip import getMachineIp
 
 class ChatAppModel:
@@ -67,11 +65,17 @@ class ChatAppModel:
 
     def registerPeerKey(self):
         try:
-            self.peerPublicKey = request.json['publicKey']
+            receivedKey = request.json['publicKey']
 
-            self.logger.info("Chave pública de %s registrada com sucesso", self.peerName)    
-        
-            return '', 200
+            if not isinstance(receivedKey, str):
+                self.logger.error("Chave pública recebida não é uma string válida")
+                return '', 400
+            else: 
+                self.peerPublicKey = receivedKey
+
+                self.logger.info("Chave pública de %s registrada com sucesso", self.peerName)    
+            
+                return '', 200
         except Exception as e:
             self.logger.error("Erro ao registrar chave pública de %s: %s", self.peerName, str(e))
 
@@ -103,7 +107,7 @@ class ChatAppModel:
         if request.method == 'POST':
             messageText = request.form['message']
         
-            def send_async():
+            def sendAsync():
                 try:
                     messageContent = {
                         "message": messageText,
@@ -129,7 +133,7 @@ class ChatAppModel:
                 except Exception as e:
                     self.logger.error("Erro ao enviar mensagem: %s", str(e))
 
-            thread = threading.Thread(target=send_async)
+            thread = threading.Thread(target=sendAsync)
             thread.start()
         
         return redirect(url_for('home'))

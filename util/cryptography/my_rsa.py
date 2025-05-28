@@ -1,5 +1,5 @@
 from util.prime_number_generator import generatePrimeNumber
-from util.my_base64 import base64Encode, base64Decode
+from util.cryptography.my_base64 import base64Encode, base64Decode
 
 def modInverse (r1, r2, t1, t2, phi):
     q = r1 // r2
