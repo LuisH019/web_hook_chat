@@ -1,3 +1,5 @@
+from utils.cryptography.to_list_converter import readInt, readListOfInt, readString, readFile
+
 k = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
@@ -81,37 +83,18 @@ def updateHash(hash, w):
 
     return hash
 
-def readInt (message):
-    messageBlock = []
-
-    for i in range(0, ((message.bit_length() + 7) // 8 or 1), 8):
-        messageBlock.append(message >> i & 0xFF)
-
-    return messageBlock
-
-def readString (message):
-    return [byte for char in message for byte in char.encode('utf-8')]
-
-def readFile(path):
-    f = open(path, 'rb')
-    bin = f.read()
-
-    messageBlock = [b for b in bin]
-
-    f.close()
-    
-    return messageBlock
-
 def sha256Encode(content, op):
-    if op == 'i':
-        messageBlock = readInt(content)
-    elif op == 's':
+    if op == "int":
+        messageBlock = readInt(content, encoding='utf-8')
+    elif op == "lin":
+        messageBlock = readListOfInt(content)
+    elif op == "str":
         messageBlock = readString(content)
-    elif op == 'f':
+    elif op == "fil":
         messageBlock = readFile(content)
     else:
         return
-    
+        
     size = (len (messageBlock)) * 8 
 
     messageBlock.append(128)
