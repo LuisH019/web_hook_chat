@@ -27,8 +27,8 @@ Key security features:
 
 1. Clone the repository:
    ```bash
-   git clone [repository-url]
-   cd secure-chat-app
+   git clone https://github.com/LuisH019/web_hook_chat
+   cd web_hook_chat
    ```
 
 2. Install dependencies:
@@ -94,7 +94,7 @@ secure-chat-app/
 ├── views/                   # Application views
 │   └── menu.py              # Console interface
 ├── chat_init.py             # Application entry point
-└── requirements.txt          # Python dependencies
+└── requirements.txt         # Python dependencies
 ```
 
 ## Troubleshooting
