@@ -2,19 +2,21 @@ import requests
 import threading
 import datetime
 import logging
-import time
 from flask import Flask, redirect, url_for, jsonify, render_template, request
 from utils.cryptography.my_rsa import rsaGenerateKeys, rsaEncode, rsaDecode
 from utils.cryptography.my_hmac import hmacGenerateKey, hmacEncodeSha256
 from utils.network import getMachineIp
 
 class ChatAppModel:
-    def __init__(self, sharedSecret, myName, myPort, peerName, peerPort, peerIp=getMachineIp()):
+    def __init__(self, sharedSecret, myName='a', myPort='5000', myIp=getMachineIp(), peerName='b', peerPort='5001', peerIp=getMachineIp()):
         self.app = Flask(__name__, template_folder = '../templates', static_folder = "../static")
         
         self.sharedSecret = sharedSecret
+
         self.myName = myName
         self.myPort = myPort
+        self.myIp = myIp
+        
         self.peerName = peerName
         self.peerPort = peerPort
         self.peerIp = peerIp
@@ -161,6 +163,6 @@ class ChatAppModel:
         return jsonify(self.allMessages)
 
     def run(self):
-        self.app.run(host="0.0.0.0", port=self.myPort)
+        self.app.run(host=self.myIp, port=self.myPort)
 
     
