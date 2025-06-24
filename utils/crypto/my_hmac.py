@@ -1,9 +1,9 @@
 import random
 
-# utils.cryptography.
+# utils.crypto.
 
-from utils.cryptography.my_sha256 import sha256Encode
-from utils.cryptography.to_list_converter import readInt, readString
+from utils.crypto.my_sha256 import sha256Encode
+from utils.crypto.to_list_converter import readInt, readString
 
 def hmacGenerateKey(keySize):
     return random.randrange(pow(2, keySize - 1), pow(2, keySize))

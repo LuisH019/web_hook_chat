@@ -3,8 +3,8 @@ import threading
 import datetime
 import logging
 from flask import Flask, redirect, url_for, jsonify, render_template, request
-from utils.cryptography.my_rsa import rsaGenerateKeys, rsaEncode, rsaDecode
-from utils.cryptography.my_hmac import hmacGenerateKey, hmacEncodeSha256
+from utils.crypto.my_rsa import rsaGenerateKeys, rsaEncode, rsaDecode
+from utils.crypto.my_hmac import hmacGenerateKey, hmacEncodeSha256
 from utils.network import getMachineIp
 
 class ChatAppModel:

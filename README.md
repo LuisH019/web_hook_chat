@@ -44,7 +44,7 @@ Key security features:
    ```bash
    python chat_init.py
    ```
-   Follow the console menu to configure both chat endpoints.
+   Follow the console console_menu to configure both chat endpoints.
 
 2. **Network Mode** (chat between two machines on the same network):
    - Run the setup on both machines with appropriate IP addresses
@@ -79,21 +79,26 @@ When starting the application, you'll need to provide:
 ## File Structure
 
 ```
-secure-chat-app/
-├── models/                  # Application models
-│   ├── chat_app_model.py    # Main chat logic
-│   └── setup_chats.py       # Chat initialization
+web_hook_chat/
+├── __init__.py
+├── core/                    # Application core
+│   ├── __init__.py
+│   ├── chat.py              # Main chat logic
+│   └── setup.py             # Chat initialization
+├── interefaces/             # Application interefaces
+│   ├── __init__.py
+│   └── console_menu.py      # Console interface
 ├── static/                  # Static web files
 │   ├── css/                 # Stylesheets
 │   └── js/                  # JavaScript files
 ├── templates/               # HTML templates
 │   └── app.html             # Chat interface
 ├── utils/                   # Utility modules
-│   ├── cryptography/        # Encryption functions
+│   ├── __init__.py
+│   ├── crypto/              # Encryption functions
 │   └── network.py           # Network utilities
-├── views/                   # Application views
-│   └── menu.py              # Console interface
 ├── chat_init.py             # Application entry point
+├── README.md
 └── requirements.txt         # Python dependencies
 ```
 

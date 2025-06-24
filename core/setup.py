@@ -1,6 +1,6 @@
 from multiprocessing import Process
 
-from models.chat_app_model import ChatAppModel
+from core.chat import ChatAppModel
 
 class SetupChats():
     def __init__(self, op, sharedSecret, myName, myPort, peerName, peerPort, peerIp):

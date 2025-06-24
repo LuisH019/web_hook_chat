@@ -3,7 +3,7 @@ import os
 from utils.input_plus import inputPlus
 from utils.network import getMachineIp
 
-from models.setup_chats import SetupChats
+from core.setup import SetupChats
 
 def menu():
     os.system('cls')
